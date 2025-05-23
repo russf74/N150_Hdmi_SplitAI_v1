@@ -1,0 +1,7 @@
+Question: Which of the following ports is assigned to the Domain Name System (DNS)?
+A (100%) 53
+B (0%) 67
+C (0%) 110
+D (0%) 389
+
+A:100%, B:0%, C:0%, D:0%

@@ -1,0 +1,8 @@
+Question: TCP port 389 is the default network port for:
+
+A (0%) RDP
+B (100%) LDAP
+C (0%) SMB
+D (0%) LDAPS
+
+A:0%, B:100%, C:0%, D:0%

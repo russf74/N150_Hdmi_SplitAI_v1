@@ -1,0 +1,5 @@
+Question: The function of the NetBT protocol is to allow NetBIOS services to be used over TCP/IP networks.
+A (100%) True
+B (0%) False
+
+A:100%, B:0%

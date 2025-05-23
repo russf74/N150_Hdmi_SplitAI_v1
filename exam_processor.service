@@ -1,0 +1,15 @@
+[Unit]
+Description=Exam Processor Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /home/russ/Documents/HDMI_View_v4/main.py
+Restart=on-failure
+User=russ
+WorkingDirectory=/home/russ/Documents/HDMI_View_v4
+StandardOutput=append:/home/russ/Documents/HDMI_View_v4/exam_processor.log
+StandardError=append:/home/russ/Documents/HDMI_View_v4/exam_processor.err
+
+[Install]
+WantedBy=multi-user.target

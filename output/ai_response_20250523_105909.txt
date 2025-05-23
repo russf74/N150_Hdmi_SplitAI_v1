@@ -1,0 +1,8 @@
+Question: Which port enables the FTP's Data Connection?
+
+A (0%) UDP port 20  
+B (100%) TCP port 20  
+C (0%) UDP port 21  
+D (0%) TCP port 21  
+
+A:0%, B:100%, C:0%, D:0%

@@ -1,0 +1,13 @@
+Question: Which of the following answers refer to IMAP4? (Select 2 answers)
+
+A (100%) Offers improved functionality in comparison to POP3
+
+B (0%) Serves the same function as POP3
+
+C (0%) Enables sending email messages from client devices
+
+D (0%) Offers less functions than POP3
+
+E (100%) Enables email exchange between mail servers
+
+A:100%, B:0%, C:0%, D:0%, E:100%

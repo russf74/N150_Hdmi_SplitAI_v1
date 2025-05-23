@@ -1,0 +1,9 @@
+Question: Dynamic Host Configuration Protocol (DHCP) runs on: (Select 2 answers)
+
+A (0%) UDP port 65  
+B (0%) UDP port 66  
+C (100%) UDP port 67  
+D (100%) UDP port 68  
+E (0%) UDP port 69  
+
+A:0%, B:0%, C:100%, D:100%, E:0%

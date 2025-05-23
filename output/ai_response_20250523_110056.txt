@@ -1,0 +1,6 @@
+Question: Of the three existing versions of the Simple Network Management Protocol (SNMP), versions 1 and 2 (SNMPv1 and SNMPv2) offer authentication based on community strings sent in an unencrypted form (in cleartext). SNMPv3 provides packet encryption, authentication, and hashing mechanisms that allow to check whether data has changed in transit.
+
+A (100%) True  
+B (0%) False  
+
+A:100%, B:0%

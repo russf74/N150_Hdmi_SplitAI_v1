@@ -1,0 +1,7 @@
+Question: POP3 protocol is used for:
+A (0%) Name resolution
+B (0%) Sending email messages
+C (0%) File exchange
+D (100%) Email retrieval
+
+A:0%, B:0%, C:0%, D:100%

@@ -1,0 +1,7 @@
+Question: TCP port 25 is used by:
+A (0%) SNMP
+B (0%) Telnet
+C (0%) FTP
+D (100%) SMTP
+
+A:0%, B:0%, C:0%, D:100%

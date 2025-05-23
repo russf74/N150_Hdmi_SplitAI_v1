@@ -1,0 +1,8 @@
+Question: What are the characteristics of SMB/CIFS? (Select all that apply)
+
+A (0%) Used mainly by computers running Linux distributions  
+B (100%) Provides shared access to files, directories, and devices  
+C (100%) Used mainly by computers running Microsoft Windows operating systems  
+D (0%) Enables voice and multimedia communications over IP networks  
+
+A:0%, B:100%, C:100%, D:0%

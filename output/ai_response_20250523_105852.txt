@@ -1,0 +1,8 @@
+Question: Which of the following answers refers to a Microsoft-proprietary remote-access protocol providing a user with graphical interface for connecting to another computer over a network?
+
+A (100%) RDP  
+B (0%) SSH  
+C (0%) VNC  
+D (0%) Telnet  
+
+A:100%, B:0%, C:0%, D:0%

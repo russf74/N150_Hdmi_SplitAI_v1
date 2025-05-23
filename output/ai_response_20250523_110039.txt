@@ -1,0 +1,8 @@
+Question: An SNMP management station receives SNMP notifications from Agents on UDP port:
+
+A (0%) 161
+B (0%) 137
+C (100%) 162
+D (0%) 138
+
+A:0%, B:0%, C:100%, D:0%
