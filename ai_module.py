@@ -203,21 +203,20 @@ def parse_answers(response: str) -> Tuple[List[str], List[str]]:
 def map_confidence_to_colors(confidences: List[str], labels: List[str]) -> List[str]:
     """Map confidence percentages to LED colors."""
     color_map = []
-    
     for i, (conf, label) in enumerate(zip(confidences, labels)):
         if label == "NA":
             color_map.append("b")  # blue for NA labels (invalid answers)
         else:
             try:
                 conf_value = int(conf)
-                if conf_value == 100:
-                    color_map.append("g")  # green only for 100% confidence
-                elif conf_value >= 70:
-                    color_map.append("a")  # amber for high confidence (70-99%)
-                elif conf_value >= 0:
-                    color_map.append("r")  # red for medium to low confidence (<70%)
+                if 91 <= conf_value <= 100:
+                    color_map.append("g")  # green for 91-100%
+                elif 70 <= conf_value <= 90:
+                    color_map.append("a")  # amber for 70-90%
+                elif 0 <= conf_value <= 69:
+                    color_map.append("r")  # red for 0-69%
                 else:
-                    color_map.append("b")  # blue for default case (shouldn't happen)
+                    color_map.append("b")  # blue for out-of-range
             except ValueError:
                 color_map.append("b")  # default to blue if conversion fails
             
