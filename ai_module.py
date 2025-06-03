@@ -209,10 +209,10 @@ def map_confidence_to_colors(confidences: List[str], labels: List[str]) -> List[
         else:
             try:
                 conf_value = int(conf)
-                if 91 <= conf_value <= 100:
-                    color_map.append("g")  # green for 91-100%
-                elif 70 <= conf_value <= 90:
-                    color_map.append("a")  # amber for 70-90%
+                if 90 <= conf_value <= 100:
+                    color_map.append("g")  # green for 90-100%
+                elif 70 <= conf_value <= 89:
+                    color_map.append("a")  # amber for 70-89%
                 elif 0 <= conf_value <= 69:
                     color_map.append("r")  # red for 0-69%
                 else:

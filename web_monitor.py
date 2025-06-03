@@ -1,6 +1,7 @@
 from flask import Flask, send_from_directory, jsonify, render_template_string
 import os
 import json
+import subprocess
 
 app = Flask(__name__)
 
@@ -146,8 +147,23 @@ def state():
         return jsonify({"error": str(e)})
 
 if __name__ == "__main__":
+    # Kill any existing web_monitor.py or Flask server on port 5000 (but not self)
+    import subprocess
+    import os
     import socket
     import logging
+    try:
+        # Find and kill processes using port 5000
+        subprocess.run(['fuser', '-k', '5000/tcp'], check=False)
+        # Also kill any stray python web_monitor.py processes except this one
+        my_pid = os.getpid()
+        # List all web_monitor.py PIDs except self
+        pids = subprocess.check_output("pgrep -f web_monitor.py", shell=True).decode().split()
+        for pid in pids:
+            if int(pid) != my_pid:
+                subprocess.run(["kill", "-9", pid], check=False)
+    except Exception as e:
+        print(f"[WARN] Could not pre-kill web server processes: {e}")
     log = logging.getLogger('werkzeug')
     log.setLevel(logging.ERROR)  # Suppress Flask's GET/POST logs
     ip = socket.gethostbyname(socket.gethostname())

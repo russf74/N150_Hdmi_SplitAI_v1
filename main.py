@@ -6,6 +6,7 @@ import shutil
 import re
 import multiprocessing
 import subprocess
+import threading
 from log_utils import setup_logging, log
 from hdmi_module import preprocess_image, save_frame
 from ocr_module import run_ocr
@@ -19,6 +20,8 @@ from question_comparator import compare_questions
 
 OUTPUT_DIR = "output"
 LOG_FILE = os.path.join(OUTPUT_DIR, "exam_processor.log")
+
+exit_flag = False
 
 def clear_output_folder():
     if not os.path.exists(OUTPUT_DIR):
@@ -40,9 +43,28 @@ def start_web_monitor():
         "python3", os.path.join(os.path.dirname(__file__), "web_monitor.py")
     ])
 
+def input_listener():
+    global exit_flag
+    while True:
+        try:
+            user_input = input()
+            if user_input.strip().lower() in ("q", "exit", "quit"):
+                print("Exit command received. Shutting down...")
+                exit_flag = True
+                break
+        except EOFError:
+            break
+
 def main():
-    # Start the web monitor in a separate process
-    start_web_monitor()
+    global exit_flag
+    # Start the web monitor in a separate process (if not already)
+    try:
+        start_web_monitor()
+    except Exception:
+        pass
+    # Start input listener thread
+    listener = threading.Thread(target=input_listener, daemon=True)
+    listener.start()
 
     # Show exam type at startup
     from ai_module import get_exam_type
@@ -72,7 +94,7 @@ def main():
 
     previous_frame_filename = os.path.join(OUTPUT_DIR, "previous_frame.jpg")
 
-    while True:
+    while not exit_flag:
         # Make loop iteration visible in terminal
         print("\n\033[96m*** New loop iteration ***\033[0m")
         log("New loop iteration")
@@ -275,6 +297,13 @@ def main():
         print("Pausing for 1 second before next iteration...")
         time.sleep(1)
     cap.release()
+    # Clean up resources here (e.g., cap.release())
+    try:
+        from led_module import update_leds
+        update_leds(["k"] * 8)  # Set all LEDs to black on exit
+        print("All LEDs set to black.")
+    except Exception as e:
+        print(f"[WARN] Could not set LEDs to black on exit: {e}")
 
 if __name__ == "__main__":
     main()

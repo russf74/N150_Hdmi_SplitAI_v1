@@ -67,6 +67,7 @@ EVALUATION INSTRUCTIONS:
 - Never assign the same top confidence to more answers than requested.
 - Take your time and carefully evaluate each question and answer
 - For standard single-answer questions, assign higher percentages to better answers, with your best answer receiving the highest percentage
+- For standard single-answer questions, a maximum of one answer can have a percentage of 90% or higher
 - Only assign 100% when you're absolutely confident an answer is correct
 - It's acceptable to have no options at 100% if you're uncertain about all answers
 - For multiple-choice questions that specifically request multiple answers (e.g., "Select all that apply", "Choose two"), assign higher percentages to each option you believe is correct, but never more than the requested number
@@ -74,7 +75,7 @@ EVALUATION INSTRUCTIONS:
 - Use any percentage from 0% to 100% to represent your confidence in each answer's correctness
 - When a question asks for a specific number of answers (e.g., "select 2"), you must not assign the same highest confidence to more than that number of answers
 
-Also at the bottom of your answer, present all the answers and their percentages in this format: A:50%, B:20%, C:100%, etc.
+Do not explain or justify your answers at all, simply present all the answers and their percentages in this format: A:50%, B:20%, C:100%, etc.
 """
     return prompt_text
 
