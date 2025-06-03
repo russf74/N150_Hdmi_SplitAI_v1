@@ -1,8 +1,0 @@
-Question: A type of protocol used in network management systems for monitoring network-attached devices is called:
-
-A (0%) SMB  
-B (0%) NTP  
-C (100%) SNMP  
-D (0%) RDP  
-
-A:0%, B:0%, C:100%, D:0%

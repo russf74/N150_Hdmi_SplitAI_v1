@@ -1,7 +1,0 @@
-Question: Which of the following answers refers to an API that enables communication between hosts on a LAN?
-A (0%) DNS
-B (0%) TCP/IP
-C (100%) NetBIOS
-D (0%) DHCP
-
-A:0%, B:0%, C:100%, D:0%

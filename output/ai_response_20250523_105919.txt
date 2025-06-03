@@ -1,7 +1,0 @@
-Question: The FTP's Control Connection for administering a session is established through:
-A (0%) UDP port 20
-B (100%) TCP port 21
-C (0%) UDP port 21
-D (0%) TCP port 20
-
-A:0%, B:100%, C:0%, D:0%

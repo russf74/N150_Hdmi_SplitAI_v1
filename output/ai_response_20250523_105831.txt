@@ -1,7 +1,0 @@
-Question: LDAP is an example of:
-A (0%) Authentication protocol
-B (0%) Address resolution protocol
-C (100%) Directory access protocol
-D (0%) File exchange protocol
-
-A:0%, B:0%, C:100%, D:0%

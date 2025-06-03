@@ -1,7 +1,0 @@
-Question: Which of the following TCP ports is used by the Internet Message Access Protocol (IMAP)?  
-A (0%) 14  
-B (0%) 389  
-C (0%) 443  
-D (100%) 636  
-
-A:0%, B:0%, C:0%, D:100%

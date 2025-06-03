@@ -1,7 +1,0 @@
-Question: What is the name of a network protocol that secures web traffic via SSL/TLS encryption?
-A (0%) SFTP
-B (100%) HTTPS
-C (0%) FIPS
-D (0%) SNMP
-
-A:0%, B:100%, C:0%, D:0%

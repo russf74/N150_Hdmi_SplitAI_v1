@@ -1,7 +1,0 @@
-Question: An SNMP Agent receives requests on UDP port:
-A (100%) 161
-B (0%) 137
-C (0%) 162
-D (0%) 138
-
-A:100%, B:0%, C:0%, D:0%

@@ -1,9 +1,0 @@
-Question: Which of the port numbers listed below are reserved for NetBIOS services? (Select 3 answers)
-
-A (0%) 135  
-B (0%) 136  
-C (100%) 137  
-D (100%) 138  
-E (100%) 139  
-
-A:0%, B:0%, C:100%, D:100%, E:100%

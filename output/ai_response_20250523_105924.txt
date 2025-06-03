@@ -1,8 +1,0 @@
-Question: SSH protocol runs on:
-
-A (0%) TCP port 21  
-B (0%) UDP port 22  
-C (0%) TCP port 20  
-D (100%) TCP port 22  
-
-A:0%, B:0%, C:0%, D:100%

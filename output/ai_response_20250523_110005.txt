@@ -1,8 +1,0 @@
-Question: TCP port 80 is assigned to:
-
-A (100%) Hypertext Transfer Protocol (HTTP)  
-B (0%) Hypertext Transfer Protocol over TLS/SSL (HTTPS)  
-C (0%) Internet Message Access Protocol (IMAP)  
-D (0%) Lightweight Directory Access Protocol (LDAP)  
-
-A:100%, B:0%, C:0%, D:0%

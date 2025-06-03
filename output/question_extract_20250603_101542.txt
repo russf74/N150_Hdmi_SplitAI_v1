@@ -1,0 +1,1 @@
+{'question': 'What are the characteristic features of SATA revision 1.0? (Select 2 answers)', 'options': {'A': '5 Gbps data transfer rate', 'B': 'Maximum cable length of 1 meter', 'C': '3 Gbps data transfer rate', 'D': 'Maximum cable length of 2 meters', 'E': '6 Gbps data transfer rate', 'F': 'Maximum cable length of 3 meters'}}

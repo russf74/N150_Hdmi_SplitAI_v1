@@ -1,7 +1,0 @@
-Question: Which of the TCP ports listed below is used by Telnet?
-A (0%) 20
-B (0%) 21
-C (0%) 22
-D (100%) 23
-
-A:0%, B:0%, C:0%, D:100%

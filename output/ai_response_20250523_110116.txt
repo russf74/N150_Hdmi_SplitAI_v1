@@ -1,7 +1,0 @@
-Question: Which of the following ports is used by HTTPS?
-A (0%) TCP port 80
-B (100%) TCP port 443
-C (0%) UDP port 53
-D (0%) TCP port 143
-
-A:0%, B:100%, C:0%, D:0%

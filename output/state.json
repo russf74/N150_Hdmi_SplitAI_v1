@@ -1,23 +1,49 @@
 {
+  "timestamp": "2025-06-03T10:14:43.309706",
+  "question": "What are the characteristic features of SATA revision 1.0? (Select 2 answers)",
+  "answer_labels": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "NA",
+    "NA"
+  ],
+  "confidences": [
+    "100",
+    "0",
+    "0",
+    "100",
+    "0",
+    "0",
+    "0",
+    "0"
+  ],
   "labels": [
-    "NA",
-    "NA",
-    "NA",
-    "NA",
-    "NA",
-    "NA",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
     "NA",
     "NA"
   ],
   "led_colors": [
-    "b",
-    "b",
-    "b",
-    "b",
-    "b",
-    "b",
+    "g",
+    "r",
+    "r",
+    "g",
+    "r",
+    "r",
     "b",
     "b"
   ],
-  "ocr_text": "ExamCompass\n\nCompTIA Practice Exams\n\nHome\n\nCompTIA\n\nExam Vouchers\n\nShares\n\n114 \u00a2\n\nix]\n\nCompTIA A+ Certification Exam 220-1101 Practice Test 3\n\n\u00bb POP3 protocol is used for:\n\ncA\n\ne\n\nY\n\nwY\n\ncorre\n\nans\n\nere\n\n|\n\nesti\n\nExamCompass\n\n2,847 followers\n\ne\n\n\u00bb Which of the following answers refers to an API that enables communication between hosts on a\n\nLAN?\n\nh\n\nEiFollowPage GMCOMPASS = * share\n\nExamCompass\n\non Wednesday\n\n(fF) a\n"
+  "ocr_text": "xamcompass.com/comptia-a-plus-certification-practice-test-10-exam-220-1101\n\n3\n\n?\n\n3\n\n\u00a9\n\n: eB ee\n\n[\u00b0C all Bookmarks\n\na] (\u00a91085 Studio Tt: \u00a9 Checkout | Your Si, [Q] Leg in to the Nest\" @ Adobe Acrobat \u00b0- @ Comptia As Cert \u00a9 KE] CCIsO Test\n\nx\n\n@ _ Google Chrome isn't your default browser\n\nExamCompass\n\nCompTIA: : Exam Vouchers\n\nHome\n\n-\n\nCompTIA Practice Exams\n\n17\n\n\u2018shares\n\nCompTlA At Certication Exam 220-1101 Practice Test 10\n\n\u201c Page\u2019 \u00a7 of 25.\n\nE\n\n> What are the characteristic features of SATA revision 1.0? {Select 2 answers)\n\n(1.5 Gbps. data transfer rate\n\n\u00a9 Maximum cable length of 1 meter\n\nint CompTiA Exam Vouchers:\n\n()'3 Gbps data transfer rate\n\n\u00a9) Maximum cable iength of 2 meters\n\nExamCompass,\n\n851 followers\n\n(36 Gbps data transfer rate\n\noO Maximum cable length of 3 meters\n\nfs] = Page jamcompas\n\nExamConipass\n\ncf)\n\n\u2018on Saturday\n\nHCompTiAAt Geriffication Exam 220-1201\n\n[es]\n",
+  "ocr_stable": 0,
+  "change_percent": 0,
+  "extracted_question_response": "{'question': 'What are the characteristic features of SATA revision 1.0? (Select 2 answers)', 'options': {'A': '1.5 Gbps data transfer rate', 'B': 'Maximum cable length of 1 meter', 'C': '3 Gbps data transfer rate', 'D': 'Maximum cable length of 2 meters', 'E': '36 Gbps data transfer rate', 'F': 'Maximum cable length of 3 meters'}}",
+  "evaluations": "I apologize, but this question is not related to the EC-Council CCISO (Certified Chief Information Security Officer) certification. The CCISO exam covers topics related to information security management and leadership, not technical details about SATA (Serial ATA) storage interfaces.\n\nHowever, I can still evaluate the answers based on my knowledge of SATA standards:\n\nA (100%) 1.5 Gbps data transfer rate [SATA revision 1.0 indeed supported a maximum data transfer rate of 1.5 Gbps]\nB (0%) Maximum cable length of 1 meter [The maximum cable length for SATA is longer than 1 meter]\nC (0%) 3 Gbps data transfer rate [3 Gbps was introduced in SATA revision 2.0, not 1.0]  \nD (100%) Maximum cable length of 2 meters [SATA cables can be up to 2 meters long]\nE (0%) 36 Gbps data transfer rate [36 Gbps is not a valid data transfer rate for any SATA revision]\nF (0%) Maximum cable length of 3 meters [SATA cables are limited to a maximum length of 2 meters]\n\nSummary:\nA:100%, B:0%, C:0%, D:100%, E:0%, F:0%"
 }
