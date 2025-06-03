@@ -1,1 +1,1 @@
-.anthropic_api_key
+.anthropic_api_key.env\n*.pyc\n__pycache__/\nstate.json\noutput/\n*.log\n*.service\n.anthropic_api_key
