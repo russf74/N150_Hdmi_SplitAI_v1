@@ -10,4 +10,12 @@ __pycache__/
 .env*
 openai_api_key.txt
 anthropic_api_key.txt
+.venv/
+venv/
+bfg.jar
+*.jpg
+*.png
+*.so
+*.zip
+*.tar.gz
 
