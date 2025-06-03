@@ -79,20 +79,28 @@ HTML_PAGE = '''
                 ledsDiv.appendChild(led);
             });
             document.getElementById('led-label').textContent = 'LEDs: ' + ledColors.join('');
-            // Detect transition to all white (processing state)
+            // Defensive: always treat missing or malformed ledColors as all white or all blue
+            ledColors = (ledColors || []).map(c => (c || '').trim().toLowerCase());
             const allWhite = ledColors.length === 8 && ledColors.every(c => c === 'w');
-            // Use a static variable to track last state
-            if (typeof fetchState.lastAllWhite === 'undefined') fetchState.lastAllWhite = false;
-            if (allWhite && !fetchState.lastAllWhite) {
-                // Just transitioned to all white: clear fields
-                document.getElementById('question').textContent = '';
-                document.getElementById('ai_question_raw').textContent = '';
-                document.getElementById('ai_answer').textContent = '';
+            const allBlue = ledColors.length === 8 && ledColors.every(c => c === 'b');
+            console.log('LEDs:', ledColors, 'All white:', allWhite, 'All blue:', allBlue);
+
+            if (allWhite || allBlue) {
+                // Blank all fields but keep the container visible
+                ["question", "ai_question_raw", "ai_answer", "ocr"].forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) {
+                        el.textContent = '';
+                        el.innerHTML = '';
+                    }
+                });
+                // Blank answers table
                 const answersTbody = document.getElementById('answers').querySelector('tbody');
                 answersTbody.innerHTML = '';
-                document.getElementById('ocr').textContent = '';
-            } else if (!allWhite) {
-                // Only update fields if not all white
+                // Do NOT hide the container, just show the LEDs as normal
+                return;
+            } else {
+                document.querySelector('.container').style.display = '';
                 // Question
                 document.getElementById('question').textContent = state.question || '(No question)';
                 // AI Extracted Question & Answers (raw OpenAI response)
@@ -114,7 +122,6 @@ HTML_PAGE = '''
                 // OCR
                 document.getElementById('ocr').textContent = state.ocr_text || '';
             }
-            fetchState.lastAllWhite = allWhite;
             // Timestamp
             document.getElementById('timestamp').textContent = 'Last updated: ' + new Date().toLocaleTimeString();
         }

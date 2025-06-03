@@ -1,1 +1,13 @@
-.anthropic_api_key.env\n*.pyc\n__pycache__/\nstate.json\noutput/\n*.log\n*.service\n.anthropic_api_key
+state.json
+output/
+sounds/
+*.pyc
+__pycache__/
+*.log
+*.bak
+*.tmp
+*.env
+.env*
+openai_api_key.txt
+anthropic_api_key.txt
+

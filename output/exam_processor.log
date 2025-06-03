@@ -1,35 +1,6 @@
-2025-06-03 10:14:23 [INFO] Exam Processor started.
-2025-06-03 10:14:23 [INFO] New loop iteration.
-2025-06-03 10:14:31 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-06-03 10:14:43 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
-2025-06-03 10:14:44 [INFO] New loop iteration.
-2025-06-03 10:14:50 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-06-03 10:14:50 [INFO] New loop iteration.
-2025-06-03 10:14:57 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-06-03 10:14:57 [INFO] New loop iteration.
-2025-06-03 10:15:03 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-06-03 10:15:03 [INFO] New loop iteration.
-2025-06-03 10:15:09 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-06-03 10:15:09 [INFO] New loop iteration.
-2025-06-03 10:15:14 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-06-03 10:15:14 [INFO] New loop iteration.
-2025-06-03 10:15:20 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-06-03 10:15:20 [INFO] New loop iteration.
-2025-06-03 10:15:25 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-06-03 10:15:25 [INFO] New loop iteration.
-2025-06-03 10:15:30 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-06-03 10:15:30 [INFO] New loop iteration.
-2025-06-03 10:15:36 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-06-03 10:15:36 [INFO] New loop iteration.
-2025-06-03 10:15:42 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-06-03 10:15:42 [INFO] New loop iteration.
-2025-06-03 10:15:47 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-06-03 10:15:47 [INFO] New loop iteration.
-2025-06-03 10:15:52 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-06-03 10:15:52 [INFO] New loop iteration.
-2025-06-03 10:15:58 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-06-03 10:15:58 [INFO] New loop iteration.
-2025-06-03 10:16:04 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-06-03 10:16:04 [INFO] New loop iteration.
-2025-06-03 10:16:09 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-06-03 10:16:09 [INFO] New loop iteration.
+2025-06-03 12:00:16 [INFO] Exam Processor started.
+2025-06-03 12:00:16 [INFO] New loop iteration
+2025-06-03 12:00:20 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-03 12:00:20 [INFO] New loop iteration
+2025-06-03 12:00:22 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-03 12:00:22 [INFO] New loop iteration

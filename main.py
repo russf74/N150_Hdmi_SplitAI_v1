@@ -4,6 +4,8 @@ import cv2
 import os
 import shutil
 import re
+import multiprocessing
+import subprocess
 from log_utils import setup_logging, log
 from hdmi_module import preprocess_image, save_frame
 from ocr_module import run_ocr
@@ -32,7 +34,16 @@ def clear_output_folder():
             except Exception as e:
                 print(f"Failed to delete {file_path}: {e}")
 
+def start_web_monitor():
+    # Start the Flask web monitor as a subprocess
+    subprocess.Popen([
+        "python3", os.path.join(os.path.dirname(__file__), "web_monitor.py")
+    ])
+
 def main():
+    # Start the web monitor in a separate process
+    start_web_monitor()
+
     # Show exam type at startup
     from ai_module import get_exam_type
     exam_type = get_exam_type()
@@ -63,8 +74,8 @@ def main():
 
     while True:
         # Make loop iteration visible in terminal
-        print("\n\033[96m*** New loop iteration. ***\033[0m\n")
-        log("New loop iteration.")
+        print("\n\033[96m*** New loop iteration ***\033[0m")
+        log("New loop iteration")
         timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
         frame_filename = os.path.join(OUTPUT_DIR, f"frame_{timestamp}.jpg")
         preproc_filename = frame_filename.replace(".jpg", "_proc.jpg")
@@ -164,6 +175,24 @@ def main():
                 print("New question detected! Setting LEDs to white while processing...")
                 processing_leds = ["w"] * 8  # All white LEDs
                 update_leds(processing_leds)
+                # --- NEW: Immediately update state.json to reflect all-white LEDs ---
+                processing_state = {
+                    "timestamp": datetime.datetime.now().isoformat(),
+                    "question": "",
+                    "answer_labels": ["NA"] * 8,
+                    "confidences": ["0"] * 8,
+                    "labels": ["NA"] * 8,
+                    "led_colors": ["w"] * 8,
+                    "ocr_text": ocr_text,
+                    "ocr_stable": 0,
+                    "change_percent": 0,
+                    "extracted_question_response": "",
+                    "evaluations": ""
+                }
+                save_state(processing_state, path="state.json")
+                save_state(processing_state, path=state_filename)
+                print("State saved with all-white LEDs for processing.")
+                # --- END NEW BLOCK ---
                 
             # Skip evaluation if question hasn't changed significantly
             if not should_process:
@@ -215,6 +244,16 @@ def main():
             "extracted_question_response": None,
             "evaluations": evaluation_result.get('evaluations', '') if 'evaluation_result' in locals() else ''
         }
+
+        # BLANK STATE if all LEDs are white
+        if state["led_colors"] == ["w"] * 8:
+            state["question"] = ""
+            state["answer_labels"] = ["NA"] * 8
+            state["confidences"] = ["0"] * 8
+            state["labels"] = ["NA"] * 8
+            state["ocr_text"] = ""
+            state["extracted_question_response"] = ""
+            state["evaluations"] = ""
         # Save the full raw OpenAI response if available
         try:
             with open(question_extract_filename, "r") as f:
