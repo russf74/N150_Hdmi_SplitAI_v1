@@ -11,7 +11,7 @@ HTML_PAGE = '''
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Exam Processor Monitor</title>
+    <title>Processor Monitor</title>
     <style>
         body { font-family: Arial, sans-serif; background: #f7f7f7; color: #222; margin: 0; padding: 0; }
         .container { max-width: 700px; margin: 40px auto; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px #0001; padding: 32px; }
@@ -34,7 +34,7 @@ HTML_PAGE = '''
 </head>
 <body>
     <div class="container">
-        <h1>Exam Processor Monitor</h1>
+        <h1>Processor Monitor</h1>
         <div class="section">
             <div class="leds" id="leds"></div>
             <div class="led-label" id="led-label"></div>
@@ -71,8 +71,6 @@ HTML_PAGE = '''
             const state = await resp.json();
             // LED colors
             let ledColors = state.led_colors || [];
-            // If all LEDs are white, show only white LEDs and clear other fields
-            const allWhite = ledColors.length === 8 && ledColors.every(c => c === 'w');
             const ledsDiv = document.getElementById('leds');
             ledsDiv.innerHTML = '';
             ledColors.forEach(c => {
@@ -81,15 +79,26 @@ HTML_PAGE = '''
                 ledsDiv.appendChild(led);
             });
             document.getElementById('led-label').textContent = 'LEDs: ' + ledColors.join('');
-            // If all white, clear question/answers/ocr
-            if (allWhite) {
+            // Detect transition to all white (processing state)
+            const allWhite = ledColors.length === 8 && ledColors.every(c => c === 'w');
+            // Use a static variable to track last state
+            if (typeof fetchState.lastAllWhite === 'undefined') fetchState.lastAllWhite = false;
+            if (allWhite && !fetchState.lastAllWhite) {
+                // Just transitioned to all white: clear fields
                 document.getElementById('question').textContent = '';
+                document.getElementById('ai_question_raw').textContent = '';
+                document.getElementById('ai_answer').textContent = '';
                 const answersTbody = document.getElementById('answers').querySelector('tbody');
                 answersTbody.innerHTML = '';
                 document.getElementById('ocr').textContent = '';
-            } else {
+            } else if (!allWhite) {
+                // Only update fields if not all white
                 // Question
                 document.getElementById('question').textContent = state.question || '(No question)';
+                // AI Extracted Question & Answers (raw OpenAI response)
+                document.getElementById('ai_question_raw').textContent = state.extracted_question_response || '(No extracted question response)';
+                // Full AI Answer Response (raw Anthropic response)
+                document.getElementById('ai_answer').textContent = state.evaluations || '(No full AI answer response)';
                 // Answers
                 const answersTbody = document.getElementById('answers').querySelector('tbody');
                 answersTbody.innerHTML = '';
@@ -104,11 +113,8 @@ HTML_PAGE = '''
                 }
                 // OCR
                 document.getElementById('ocr').textContent = state.ocr_text || '';
-                // AI Extracted Question & Answers (raw OpenAI response)
-                document.getElementById('ai_question_raw').textContent = state.extracted_question_response || '(No extracted question response)';
-                // Full AI Answer Response (raw Anthropic response)
-                document.getElementById('ai_answer').textContent = state.evaluations || '(No full AI answer response)';
             }
+            fetchState.lastAllWhite = allWhite;
             // Timestamp
             document.getElementById('timestamp').textContent = 'Last updated: ' + new Date().toLocaleTimeString();
         }

@@ -33,6 +33,12 @@ def clear_output_folder():
                 print(f"Failed to delete {file_path}: {e}")
 
 def main():
+    # Show exam type at startup
+    from ai_module import get_exam_type
+    exam_type = get_exam_type()
+    print(f"\n\033[93mExam type: {exam_type}\033[0m")
+    print("(To change, edit the file: exam_type.txt in your project folder)")
+
     clear_output_folder()
     setup_logging(LOG_FILE)
     log("Exam Processor started.")

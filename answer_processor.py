@@ -59,14 +59,20 @@ C (42%) [Answer C text]
 D (87%) [Answer D text]
 
 EVALUATION INSTRUCTIONS:
+- If the question asks for a specific number of answers (e.g., "select 2 answers"), you must assign the highest confidence percentages to exactly that number of answers.
+- Do not assign the same highest confidence to more answers than requested.
+- The highest confidence does not have to be 100%—use your best judgment.
+- All other answers must have a lower confidence than the selected ones.
+- For example, if asked to select 2, you might use 92% and 87% for the top two, and lower values for the rest.
+- Never assign the same top confidence to more answers than requested.
 - Take your time and carefully evaluate each question and answer
 - For standard single-answer questions, assign higher percentages to better answers, with your best answer receiving the highest percentage
 - Only assign 100% when you're absolutely confident an answer is correct
 - It's acceptable to have no options at 100% if you're uncertain about all answers
-- For multiple-choice questions that specifically request multiple answers (e.g., "Select all that apply", "Choose two"), assign higher percentages to each option you believe is correct
+- For multiple-choice questions that specifically request multiple answers (e.g., "Select all that apply", "Choose two"), assign higher percentages to each option you believe is correct, but never more than the requested number
 - Be honest about your confidence level - use percentages that truly reflect your certainty
 - Use any percentage from 0% to 100% to represent your confidence in each answer's correctness
-- When a question asks for a specific number of answers (e.g., "select 2"), try to identify that many best answers, but don't force 100% confidence if uncertain
+- When a question asks for a specific number of answers (e.g., "select 2"), you must not assign the same highest confidence to more than that number of answers
 
 Also at the bottom of your answer, present all the answers and their percentages in this format: A:50%, B:20%, C:100%, etc.
 """
