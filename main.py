@@ -93,8 +93,28 @@ def main():
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
 
     previous_frame_filename = os.path.join(OUTPUT_DIR, "previous_frame.jpg")
+    pause_state_path = os.path.join(OUTPUT_DIR, "pause_state.json")
 
     while not exit_flag:
+        # Check pause state at the start of each loop
+        pause = False
+        try:
+            if os.path.exists(pause_state_path):
+                import json
+                with open(pause_state_path, "r") as f:
+                    pause_data = json.load(f)
+                if pause_data.get("paused"):
+                    pause = True
+        except Exception as e:
+            print(f"[WARN] Could not read pause state: {e}")
+            # If error, default to not paused
+            pause = False
+
+        if pause:
+            print("[PAUSED] Backend processing is paused. Waiting...")
+            time.sleep(1)
+            continue
+
         # Make loop iteration visible in terminal
         print("\n\033[96m*** New loop iteration ***\033[0m")
         log("New loop iteration")

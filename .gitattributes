@@ -1,0 +1,18 @@
+# Set binary files to be treated as binary to avoid git trying to diff them
+*.jpg binary
+*.png binary
+*.wav binary
+*.so binary
+*.jar binary
+*.pyc binary
+
+# Ignore these files for git diff purposes
+*.jpg diff=binary
+*.png diff=binary
+*.wav diff=binary
+*.so diff=binary
+*.jar diff=binary
+*.pyc diff=binary
+
+# Set large text files to be treated differently
+*.log filter=lfs diff=lfs merge=lfs -text

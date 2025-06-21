@@ -1,4 +1,4 @@
-from flask import Flask, send_from_directory, jsonify, render_template_string
+from flask import Flask, send_from_directory, jsonify, render_template_string, request
 import os
 import json
 import subprocess
@@ -6,6 +6,7 @@ import subprocess
 app = Flask(__name__)
 
 STATE_PATH = os.path.join(os.path.dirname(__file__), "output", "state.json")
+PAUSE_PATH = os.path.join(os.path.dirname(__file__), "output", "pause_state.json")
 
 HTML_PAGE = '''
 <!DOCTYPE html>
@@ -14,6 +15,18 @@ HTML_PAGE = '''
     <meta charset="UTF-8">
     <title>Processor Monitor</title>
     <style>
+        body { font-family: Arial, sans-serif; background: #f7f7f7; color: #222; margin: 0; padding: 0; }
+        .container { max-width: 700px; margin: 40px auto; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px #0001; padding: 32px; }
+        h1 { text-align: center; }
+        .leds { display: flex; justify-content: center; margin: 20px 0; }
+        .toggle-section { text-align: center; margin-bottom: 24px; }
+        .toggle-switch { position: relative; display: inline-block; width: 60px; height: 34px; }
+        .toggle-switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; }
+        .slider:before { position: absolute; content: ""; height: 26px; width: 26px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }
+        input:checked + .slider { background-color: #2196F3; }
+        input:checked + .slider:before { transform: translateX(26px); }
+        .toggle-label { margin-left: 12px; font-size: 1.1em; }
         body { font-family: Arial, sans-serif; background: #f7f7f7; color: #222; margin: 0; padding: 0; }
         .container { max-width: 700px; margin: 40px auto; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px #0001; padding: 32px; }
         h1 { text-align: center; }
@@ -36,6 +49,13 @@ HTML_PAGE = '''
 <body>
     <div class="container">
         <h1>Processor Monitor</h1>
+        <div class="toggle-section">
+            <label class="toggle-switch">
+                <input type="checkbox" id="pauseToggle">
+                <span class="slider"></span>
+            </label>
+            <span class="toggle-label" id="toggleLabel">Enabled</span>
+        </div>
         <div class="section">
             <div class="leds" id="leds"></div>
             <div class="led-label" id="led-label"></div>
@@ -66,6 +86,25 @@ HTML_PAGE = '''
         <div class="timestamp" id="timestamp"></div>
     </div>
     <script>
+        async function fetchPauseState() {
+            const resp = await fetch('/pause_state?_=' + Date.now());
+            if (!resp.ok) return;
+            const data = await resp.json();
+            const paused = data.paused;
+            document.getElementById('pauseToggle').checked = !paused;
+            document.getElementById('toggleLabel').textContent = paused ? 'Paused' : 'On';
+        }
+        document.getElementById('pauseToggle').addEventListener('change', async function() {
+            const paused = !this.checked;
+            await fetch('/toggle_pause', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ paused })
+            });
+            document.getElementById('toggleLabel').textContent = paused ? 'Paused' : 'On';
+        });
+        setInterval(fetchPauseState, 2000);
+
         async function fetchState() {
             const resp = await fetch('/state.json?_=' + Date.now());
             if (!resp.ok) return;
@@ -133,6 +172,20 @@ HTML_PAGE = '''
 </html>
 '''
 
+def get_pause_state():
+    if os.path.exists(PAUSE_PATH):
+        try:
+            with open(PAUSE_PATH, "r") as f:
+                data = json.load(f)
+            return data.get("paused", False)
+        except Exception:
+            return False
+    return False
+
+def set_pause_state(paused):
+    with open(PAUSE_PATH, "w") as f:
+        json.dump({"paused": paused}, f)
+
 @app.route("/")
 def index():
     return render_template_string(HTML_PAGE)
@@ -145,6 +198,19 @@ def state():
         return jsonify(data)
     except Exception as e:
         return jsonify({"error": str(e)})
+
+@app.route("/toggle_pause", methods=["POST"])
+def toggle_pause():
+    try:
+        paused = bool(json.loads(request.data).get("paused", False))
+        set_pause_state(paused)
+        return jsonify({"success": True, "paused": paused})
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)})
+
+@app.route("/pause_state")
+def pause_state():
+    return jsonify({"paused": get_pause_state()})
 
 if __name__ == "__main__":
     # Kill any existing web_monitor.py or Flask server on port 5000 (but not self)
